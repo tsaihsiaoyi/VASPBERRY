@@ -6,15 +6,15 @@ VASPBERRY is written for the post-processing purpose of the VASP outputs, i.e., 
 * git clone --branch master  https://github.com/Infant83/TBFIT.git
 
 # Compile
-* Serial version : 
-    > ifort -fpp -assume byterecl -mkl -o vaspberry vaspberry.f
+* ~~Serial version~~ : 
+    > ~~ifort -fpp -assume byterecl -mkl -o vaspberry vaspberry.f~~
 * Multicore version : 
-    > mpif90 -DMPI_USE -mkl -fpp -assume byterecl -o vaspberry vaspberry.f
+    > mpiifort vaspberry.f90 -fpp -assume byterecl -I$MKLROOT/include/intel64/lp64 -lmkl_lapack95_lp64 -lmkl_intel_lp64 -lmkl_intel_thread -lmkl_core -liomp5 -lpthread -o vaspberry
 
-* Note for gfortran:
-    For gfortran, please use vaspberry_gfortran_serial.f for the compilation. This only support non-parallel calculations.
-    For the compilation, for example
-    > gfortran -L/usr/local/lib/lapack/ -l lapack -o vaspberry vaspberry_gfortran_serial.f
+* ~~Note for gfortran~~:
+    ~~For gfortran, please use vaspberry_gfortran_serial.f for the compilation. This only support non-parallel calculations.~~
+    ~~For the compilation, for example~~
+    > ~~gfortran -L/usr/local/lib/lapack/ -l lapack -o vaspberry vaspberry_gfortran_serial.f~~
 
 # Features
 * Berry curvature calculation
